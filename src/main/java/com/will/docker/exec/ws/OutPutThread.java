@@ -16,7 +16,7 @@ public class OutPutThread extends Thread {
     private WebSocketSession session;
 
     public OutPutThread(InputStream inputStream, WebSocketSession session){
-        super("OutPut"+new Date().getTime());
+        super("OutPut"+System.currentTimeMillis());
         this.session=session;
         this.inputStream=inputStream;
     }
@@ -28,6 +28,7 @@ public class OutPutThread extends Thread {
             while(!this.isInterrupted()){
                 int n=inputStream.read(bytes);
                 String msg=new String(bytes,0,n);
+//                System.out.println(msg);
                 session.sendMessage(new TextMessage(msg));
                 bytes=new byte[1024];
             }

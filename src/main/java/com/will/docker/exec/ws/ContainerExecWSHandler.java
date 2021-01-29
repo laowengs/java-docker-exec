@@ -51,7 +51,7 @@ public class ContainerExecWSHandler extends TextWebSocketHandler {
      */
     private String createExec(String ip, String containerId) throws Exception {
         return DockerHelper.query(ip, docker->{
-            ExecCreation execCreation=docker.execCreate(containerId,new String[]{"/bin/bash"},
+            ExecCreation execCreation=docker.execCreate(containerId,new String[]{"/bin/sh"},
                     DockerClient.ExecCreateParam.attachStdin(), DockerClient.ExecCreateParam.attachStdout(), DockerClient.ExecCreateParam.attachStderr(),
                     DockerClient.ExecCreateParam.tty(true));
             return execCreation.id();
