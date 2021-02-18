@@ -66,12 +66,12 @@ public class ContainerExecWSHandler extends TextWebSocketHandler {
      * @throws IOException
      */
     private Socket connectExec(String ip, String execId) throws IOException {
-        Socket socket=new Socket(ip,2375);
+        Socket socket=new Socket(ip,12375);
         socket.setKeepAlive(true);
         OutputStream out = socket.getOutputStream();
         StringBuffer pw = new StringBuffer();
         pw.append("POST /exec/"+execId+"/start HTTP/1.1\r\n");
-        pw.append("Host: "+ip+":2375\r\n");
+        pw.append("Host: "+ip+":12375\r\n");
         pw.append("User-Agent: Docker-Client\r\n");
         pw.append("Content-Type: application/json\r\n");
         pw.append("Connection: Upgrade\r\n");
